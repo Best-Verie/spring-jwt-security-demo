@@ -26,7 +26,7 @@ import com.example.classbdemo.services.IMarkServices;
 import com.example.classbdemo.utils.APIResponse;
 
 @RestController
-@RequestMapping("/marks")
+@RequestMapping("/api/marks")
 public class MarkController {
 	
 	
