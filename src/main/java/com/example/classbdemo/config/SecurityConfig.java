@@ -79,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()    // <---------- You need this
 	            .antMatchers("/", "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html",
 						"/**/*.css", "/**/*.js").permitAll()
-	            .antMatchers( "/swagger-resources/**", "/swagger-ui.html","/api-docs","/v3/api-docs/**","/v2/api-docs/**").permitAll()
+	            .antMatchers( "/swagger-resources/**", "/api/auth/**", "/api/roles/**", "/swagger-ui.html","/api-docs","/v3/api-docs/**","/v2/api-docs/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/public/**", "/api/users/**", "/ussd/**").permitAll().anyRequest()
 				.authenticated();
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

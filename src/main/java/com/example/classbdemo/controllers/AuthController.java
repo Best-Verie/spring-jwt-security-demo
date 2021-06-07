@@ -90,6 +90,10 @@ public class AuthController {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setActivationCode(user.getMobile());
 		user.setStatus(EAccountStatus.ACTIVE);
+		user.setFirstName(signUpRequest.getFirstName());
+		user.setLastName(
+				signUpRequest.getLastName()
+		);
 		user.setFullName(signUpRequest.getFirstName()+" "+signUpRequest.getLastName());
 		
 		Optional<Role> userRole = roleRepository.findByName(signUpRequest.getRoleName());
