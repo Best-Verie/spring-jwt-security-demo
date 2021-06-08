@@ -64,14 +64,17 @@ public class MarkController {
 	
 		Optional<Course> course = courseRepository.findById(dto.getCourseId());
 		if(!course.isPresent()) {
-			ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new APIResponse("Course not found", false));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new APIResponse("Course not found", false));
 		}
 		Optional<Student> student = StudentRepository.findById(dto.getStudentId());
 		
 		if(!student.isPresent()) {
-			ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new APIResponse("Student not found", false));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new APIResponse("Student not found", false));
 		}
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(markService.save(dto, student.get(), course.get()));
+
+//		if(course.isPresent() && student.isPresent()){
+			return ResponseEntity.status(HttpStatus.CREATED).body(markService.save(dto, student.get(), course.get()));
+//		}
+
 	}
 }

@@ -97,9 +97,12 @@ public class AuthController {
 		user.setFullName(signUpRequest.getFirstName()+" "+signUpRequest.getLastName());
 		
 		Optional<Role> userRole = roleRepository.findByName(signUpRequest.getRoleName());
-	
 
+
+		if(userRole.isPresent())
 		user.setRoles(Collections.singleton(userRole.get()));
+		else
+			user.setRoles(null);
 
 		User result = userRepository.save(user);
 		
